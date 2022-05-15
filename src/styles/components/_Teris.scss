@@ -1,0 +1,19 @@
+.teris {
+	--teris-grid-gap: 12px;
+	display: inline-grid;
+	grid-auto-flow: row;
+	gap: var(--teris-grid-gap);
+	padding: var(--teris-grid-gap);
+	//background-color: #ccc;
+	&__row {
+		display: grid;
+		grid-auto-flow: column;
+		gap: var(--teris-grid-gap);
+	}
+	&__cell {
+		--cell-size: calc((100vw  - (var(--teris-grid-gap) * (var(--teris-width) + 1))) / var(--teris-width));
+		width: var(--cell-size);
+		height: var(--cell-size);
+		background-color: #333;
+	}
+}

@@ -1,12 +1,11 @@
 <template>
-  <div>
-    <h1>
-      Home
-    </h1>
+  <div class="home">
+    <h1>Color Teris</h1>
+    <RouterLink :to="{ name: 'play' }">Play</RouterLink>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'Home'
 }
