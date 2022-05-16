@@ -8,6 +8,7 @@ html, body {
 
 html, body, #app {
 	height: 100%;
+	touch-action: manipulation; // Try REMOVE THE DOUBLE-TAP ZOOM FEATURE ON IOS
 }
 
 * {

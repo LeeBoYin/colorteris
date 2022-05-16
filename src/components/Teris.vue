@@ -27,7 +27,8 @@
             }"
           :is-selected="checkIsCoordinateSelected(brickCoordinateMap.get(brick))"
           :is-new="brick === newBrick"
-          @click="handleClickColorBrick(brickCoordinateMap.get(brick))"
+          @touchstart="handleClickColorBrick(brickCoordinateMap.get(brick))"
+          @mousedown="handleClickColorBrick(brickCoordinateMap.get(brick))"
       />
     </div>
   </div>
