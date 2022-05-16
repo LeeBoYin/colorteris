@@ -4,6 +4,7 @@
       Score: {{ score }}
       <a
           v-if="!isRunning"
+          style="text-decoration: underline; cursor: pointer"
           @click="restart"
       >restart</a>
     </div>
@@ -21,6 +22,15 @@
 import { defineComponent } from 'vue';
 import Teris from './Teris.vue';
 import { Brick, Color } from '../types';
+
+// const HUE_OFFSET = Math.floor(Math.random() * 360);
+const HUE_OFFSET = 30;
+const HUE_VARIATION = 4;
+const SATURATION = 100;
+const MINX_LIGHTNESS = 60;
+const MAX_LIGHTNESS = 90;
+const LIGHTNESS_VARIATION = 3;
+
 export default defineComponent({
   components: {
     Teris,
@@ -50,17 +60,11 @@ export default defineComponent({
       this.interval = undefined;
     },
     addNewBricks() {
-      const hueTypeNum = 4;
-      const hueOffset = 30;
-      // const saturationTypeNum = 3;
-      const minLightness = 60;
-      const maxLightness = 90;
-      const lightnessTypeNum = 3;
       (this.$refs.teris as any).addBrick(new Brick(
           new Color(
-              (hueOffset + Math.floor(Math.random() * hueTypeNum) * 360 / hueTypeNum) % 360,
-              100,
-              minLightness + Math.floor(Math.random() * lightnessTypeNum) * (maxLightness - minLightness) / lightnessTypeNum),
+              (HUE_OFFSET + Math.floor(Math.random() * HUE_VARIATION) * 360 / HUE_VARIATION) % 360,
+              SATURATION,
+              MINX_LIGHTNESS + Math.floor(Math.random() * LIGHTNESS_VARIATION) * (MAX_LIGHTNESS - MINX_LIGHTNESS) / LIGHTNESS_VARIATION),
           ));
     },
     handleMatched() {

@@ -3,6 +3,7 @@
       class="color-brick"
       :class="{
         'color-brick--selected': isSelected,
+        'color-brick--new': isNew,
       }"
       :style="{
         '--color-brick-background-color': backgroundColor,
@@ -20,6 +21,10 @@ export default defineComponent({
       required: true,
     },
     isSelected: {
+      type: Boolean,
+      default: false,
+    },
+    isNew: {
       type: Boolean,
       default: false,
     },

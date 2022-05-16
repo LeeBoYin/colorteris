@@ -23,6 +23,9 @@ export class Coordinate {
 }
 
 export class Brick {
-	constructor(public color: Color) {}
+	public id: string;
+	constructor(public color: Color) {
+		this.id = Math.floor(performance.now()).toString();
+	}
 }
 

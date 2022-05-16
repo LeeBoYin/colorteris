@@ -1,5 +1,8 @@
 .teris {
 	--teris-grid-gap: 12px;
+	--teris-size: 100vw;
+	--cell-size: calc((var(--teris-size) - (var(--teris-grid-gap) * (var(--teris-width) + 1))) / var(--teris-width));
+	position: relative;
 	display: inline-grid;
 	grid-auto-flow: row;
 	gap: var(--teris-grid-gap);
@@ -11,9 +14,34 @@
 		gap: var(--teris-grid-gap);
 	}
 	&__cell {
-		--cell-size: calc((100vw  - (var(--teris-grid-gap) * (var(--teris-width) + 1))) / var(--teris-width));
 		width: var(--cell-size);
 		height: var(--cell-size);
 		background-color: #333;
+	}
+
+	// brick in cell
+	.color-brick {
+		--coordinate-x: 0;
+		--coordinate-y: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: var(--cell-size);
+		height: var(--cell-size);
+		transform: translate(
+			calc((var(--coordinate-x, 0) + 1) * var(--teris-grid-gap) + var(--coordinate-x, 0) * var(--cell-size)),
+			calc((var(--coordinate-y, 0) + 1) * var(--teris-grid-gap) + var(--coordinate-y, 0) * var(--cell-size))
+		);
+		transition: transform .2s ease-out;
+		&--new {
+			transform: translate(
+				calc((var(--coordinate-x, 0) + 1) * var(--teris-grid-gap) + var(--coordinate-x, 0) * var(--cell-size)),
+				-50vh
+			);
+		}
+	}
+
+	@media screen and (min-width: 480px) {
+		--teris-size: 480px;
 	}
 }
