@@ -56,7 +56,7 @@ export default defineComponent({
       const minLightness = 60;
       const maxLightness = 90;
       const lightnessTypeNum = 3;
-      this.$refs.teris.addBrick(new Brick(
+      (this.$refs.teris as any).addBrick(new Brick(
           new Color(
               (hueOffset + Math.floor(Math.random() * hueTypeNum) * 360 / hueTypeNum) % 360,
               100,
@@ -72,7 +72,7 @@ export default defineComponent({
     },
     restart() {
       this.score = 0;
-      this.$refs.teris.resetBrickMap();
+      (this.$refs.teris as any).resetBrickMap();
       this.start();
     },
   },
