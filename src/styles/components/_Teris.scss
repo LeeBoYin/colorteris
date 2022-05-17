@@ -17,12 +17,14 @@
 		width: var(--cell-size);
 		height: var(--cell-size);
 		background-color: #333;
+		border-radius: 4px;
 	}
 
 	// brick in cell
 	.color-brick {
 		--coordinate-x: 0;
 		--coordinate-y: 0;
+		--transform-scale: 1;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -31,13 +33,16 @@
 		transform: translate(
 			calc((var(--coordinate-x, 0) + 1) * var(--teris-grid-gap) + var(--coordinate-x, 0) * var(--cell-size)),
 			calc((var(--coordinate-y, 0) + 1) * var(--teris-grid-gap) + var(--coordinate-y, 0) * var(--cell-size))
-		);
+		) scale(var(--transform-scale));
 		transition: transform .2s ease-out;
 		&--new {
 			transform: translate(
 				calc((var(--coordinate-x, 0) + 1) * var(--teris-grid-gap) + var(--coordinate-x, 0) * var(--cell-size)),
 				-50vh
-			);
+			) scale(var(--transform-scale));
+		}
+		&:active {
+			--transform-scale: 0.8;
 		}
 	}
 
