@@ -11,6 +11,16 @@ html, body, #app {
 	touch-action: manipulation; // Try REMOVE THE DOUBLE-TAP ZOOM FEATURE ON IOS
 }
 
+p {
+	margin: 0;
+}
+
+a {
+	cursor: pointer;
+	text-decoration: underline;
+	color: #FFFFFF !important;
+}
+
 * {
 	box-sizing: border-box;
 }

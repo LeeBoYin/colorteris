@@ -3,8 +3,7 @@
     <div class="game__score">
       Score: {{ score }}
       <a
-          v-if="!isRunning"
-          style="text-decoration: underline; cursor: pointer"
+          v-if="isFull && !isRunning"
           @click="restart"
       >restart</a>
     </div>
@@ -32,6 +31,7 @@ const MAX_LIGHTNESS = 90;
 const LIGHTNESS_VARIATION = 3;
 
 export default defineComponent({
+  expose: ['start'],
   components: {
     Teris,
   },
@@ -41,10 +41,8 @@ export default defineComponent({
       intervalToAddBrick: 500,
       interval: undefined as (number|undefined),
       isRunning: false,
+      isFull: false,
     };
-  },
-  mounted() {
-    this.start();
   },
   methods: {
     start() {
@@ -72,11 +70,13 @@ export default defineComponent({
     },
     handleFull() {
       this.stop();
+      this.isFull = true;
       this.$emit('ended');
     },
     restart() {
       this.score = 0;
       (this.$refs.teris as any).resetBrickMap();
+      this.isFull = false;
       this.start();
     },
   },
