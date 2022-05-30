@@ -2,7 +2,7 @@
   <div class="home">
     <h1>Color Teris</h1>
     <img
-        src="../assets/logo.png"
+        src="/logo.png"
         alt="Color Teris Logo"
         width="200"
     >
